@@ -1,10 +1,11 @@
-function init() {
-	const canvas = document.getElementById('maze');
-	const ctx = canvas.getContext('2d');
+function setup() {
+	createCanvas(150,150)
+}
 
-	ctx.fillStyle = "rgb(0, 200, 0)";
-    ctx.fillRect(10, 10, 50, 50);
+function draw() {
+	fill(color('rgb(0, 200, 0)'));
+    rect(10, 10, 50, 50);
 
-    ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
-    ctx.fillRect(30, 30, 50, 50);
+    fill(color("rgba(0, 0, 200, 0.5)"));
+    rect(30, 30, 50, 50);
 }
