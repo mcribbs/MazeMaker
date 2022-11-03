@@ -32,8 +32,11 @@ function draw() {
     var next = current.checkNeighbors();
     if (next) {
         next.visited = true;
+        stack.push(current);
         removeWalls(current,next);
         current = next;
+    } else if (stack.length > 0) {
+        current = stack.pop();
     }
 }
 
