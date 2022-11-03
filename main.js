@@ -1,15 +1,16 @@
 var cols, rows;
-var w = 40;
+var w = 50;
 var grid = [];
 
 var current;
+var stack = [];
 
 function setup() {
-	createCanvas(400,400)
+	createCanvas(800,1000)
     cols = floor(width/w);
     rows = floor(height/w);
 
-    frameRate(5);
+    //frameRate(5);
 
     for (var j = 0; j < rows; j++) {
         for (var i = 0; i < cols; i++) {
@@ -17,12 +18,11 @@ function setup() {
             grid.push(cell);
         }
     }
-
     current = grid[0];
 }
 
 function draw() {
-    background(51);
+    background(255);
     for (var i = 0; i < grid.length; i++) {
         grid[i].show();
     }
