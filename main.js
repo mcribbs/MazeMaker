@@ -1,5 +1,5 @@
 var cols, rows;
-var w = 20;
+var w = 50;
 var grid = [];
 
 var start_x, start_y;
@@ -56,7 +56,7 @@ function draw() {
     }
 
     fill(0);
-    textSize(12);
+    textSize((w*4)/6);
     textAlign(CENTER,CENTER);
     text('Start', (start_x*w) + (3*w/2), (start_y*w) + w);
     text('Finish', (finish_x*w) + (3*w/2), (finish_y*w) + w);
