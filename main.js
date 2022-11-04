@@ -2,6 +2,9 @@ var cols, rows;
 var w = 20;
 var grid = [];
 
+var start_x, start_y;
+var finish_x, finish_y;
+
 var current;
 var stack = [];
 
@@ -20,25 +23,29 @@ function setup() {
     }
 
     // setup start location
+    start_x = floor(random(0,cols-3));
+    start_y = floor(random(0,rows-3));
     for (var j = 0; j < 2; j++) {
         for (var i = 0; i < 3; i++) {
-            grid[index(i,j)].visited = true;
-            grid[index(i,j)].walls = [false, false, false, false];
+            grid[index(start_x+i,start_y+j)].visited = true;
+            grid[index(start_x+i,start_y+j)].walls = [false, false, false, false];
         }
     }
-    grid[index(2,1)].walls[2] = false;
-    grid[index(2,2)].walls[0] = false;
-    current = grid[index(2,2)];
+    grid[index(start_x+2,start_y+1)].walls[2] = false;
+    grid[index(start_x+2,start_y+2)].walls[0] = false;
+    current = grid[index(start_x+2,start_y+2)];
 
-    // setup end location
-    for (var j = rows-2; j < rows; j++) {
-        for (var i = cols-3; i < cols; i++) {
-            grid[index(i,j)].visited = true;
-            grid[index(i,j)].walls = [false, false, false, false];
+    // setup finish location
+    finish_x = floor(random(0,cols-3));
+    finish_y = floor(random(1,rows-1));
+    for (var j = 0; j < 2; j++) {
+        for (var i = 0; i < 3; i++) {
+            grid[index(finish_x+i,finish_y+j)].visited = true;
+            grid[index(finish_x+i,finish_y+j)].walls = [false, false, false, false];
         }
     }
-    grid[index(cols-3,rows-3)].walls[2] = false;
-    grid[index(cols-3,rows-2)].walls[0] = false;
+    grid[index(finish_x+2,finish_y-1)].walls[2] = false;
+    grid[index(finish_x+2,finish_y)].walls[0] = false;
 
 }
 
@@ -50,8 +57,9 @@ function draw() {
 
     fill(0);
     textSize(12);
-    text('Start', w*(2/3), w*(5/4));
-    text('Finish', (cols*w - w*3 ) + w*(2/3) , (rows*w - w*2) + w*(5/4));
+    textAlign(CENTER,CENTER);
+    text('Start', (start_x*w) + (3*w/2), (start_y*w) + w);
+    text('Finish', (finish_x*w) + (3*w/2), (finish_y*w) + w);
 
     current.visited = true;
     current.highlight();
